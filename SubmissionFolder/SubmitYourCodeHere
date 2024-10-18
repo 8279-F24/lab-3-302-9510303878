@@ -1,1 +1,31 @@
+from adafruit_circuitplayground import cp
 
+while True:
+    blue = (0, 0, 255)
+    
+    
+    try:
+        num_leds = int(input("Enter the number of LEDs to switch on (1-10): "))
+    except ValueError:
+        print('Entered value is not valid.')
+        print('do you want to try again')
+        continue
+
+    if 1 <= num_leds <= 10:
+        
+        for i in range(10):
+            cp.pixels[i] = (0, 0, 0)
+
+        
+        for i in range(num_leds):
+            cp.pixels[i] = blue
+            
+    else:
+        print("Number out of range. Please enter a number between 1 and 10.")
+        continue
+    
+
+    restart = input("Do you want to start again? (n to stop, any other key to continue): ").lower()
+    if restart == 'n':
+        print("Program ended.")
+        break
